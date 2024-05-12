@@ -85,17 +85,14 @@ void BallBoundaries(struct rect* cBall)
 		cBall->y = (SCREEN_HEIGHT - cBall->height);
 		cBall->velocityY = cBall->velocityY * -1;
 	}
+}
 
-	//TEMPORARY: Adding horizontal bounds to make sure the collision and bouncing is working
-	if(cBall->x < 0)
-	{
-		cBall->x = 0;
-		cBall->velocityX = cBall->velocityX * -1;
-	}
+void AdjustVelocityByHitPosition(struct rect* cBall, struct rect* cPaddle)
+{
+	int ballMiddle = cBall->y + (cBall->height / 2);
+	int paddleMiddle = cPaddle->y + (cPaddle->height / 2);
 
-	if(cBall->x + cBall->width > SCREEN_WIDTH)
-	{
-		cBall->x = (SCREEN_WIDTH - cBall->width);
-		cBall->velocityX = cBall->velocityX * -1;
-	}
+	int difference = (ballMiddle - paddleMiddle) / 8;
+	cBall->velocityY = 0;
+	cBall->velocityY += difference;
 }
