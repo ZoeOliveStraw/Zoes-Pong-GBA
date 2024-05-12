@@ -1,4 +1,4 @@
-#include "../include/gameplay.h"
+#include "gameplay.h"
 
 void SetInput(struct input* cInput)
 {
@@ -60,6 +60,7 @@ void MovePlayer(struct rect* player, struct input* input)
 	player->prevY = player->y;
 }
 
+//Sets previous values of ball position and then updates its  position
 void MoveBall(struct rect* ball)
 {
 	ball->prevX = ball->x;
@@ -67,4 +68,34 @@ void MoveBall(struct rect* ball)
 
 	ball->x += ball->velocityX;
 	ball->y += ball->velocityY;
+}
+
+void BallBoundaries(struct rect* cBall)
+{
+
+	//Keep the ball vertically within the playspace.
+	if(cBall->y < 0)
+	{
+		cBall->y = 0;
+		cBall->velocityY = cBall->velocityY * -1;
+	}
+
+	if(cBall->y + cBall->height > SCREEN_HEIGHT)
+	{
+		cBall->y = (SCREEN_HEIGHT - cBall->height);
+		cBall->velocityY = cBall->velocityY * -1;
+	}
+
+	//TEMPORARY: Adding horizontal bounds to make sure the collision and bouncing is working
+	if(cBall->x < 0)
+	{
+		cBall->x = 0;
+		cBall->velocityX = cBall->velocityX * -1;
+	}
+
+	if(cBall->x + cBall->width > SCREEN_WIDTH)
+	{
+		cBall->x = (SCREEN_WIDTH - cBall->width);
+		cBall->velocityX = cBall->velocityX * -1;
+	}
 }

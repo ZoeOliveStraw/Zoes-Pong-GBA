@@ -15,5 +15,7 @@ void KeepInBounds(struct rect* cRect);
 bool CheckCollision(struct rect* cRectA, struct rect* cRectB);
 void MovePlayer(struct rect* player, struct input* input);
 void MoveBall(struct rect* ball);
+void BallBoundaries(struct rect* cBall);
+void AdjustVelocityByHitPosition(struct rect* cBall, struct rect* cPaddle);
 
 #endif

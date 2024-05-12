@@ -1,5 +1,5 @@
 {
-    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
         "gba_systemcalls.h": "c",
         "gba_console.h": "c",
@@ -8,6 +8,7 @@
         "graphics.h": "c",
         "gba_input.h": "c",
         "gba_interrupt.h": "c",
-        "gba_video.h": "c"
+        "gba_video.h": "c",
+        "gameplay.h": "c"
     }
 }

@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "C:/devkitPro/libgba/include/**",
                 "${workspaceFolder}/include",
-                "${workspaceFolder}/source"
+                "${workspaceFolder}/source",
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",

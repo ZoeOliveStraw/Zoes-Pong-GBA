@@ -3,17 +3,17 @@
 int paddle_width = 8;
 int paddle_height = 24;
 
-struct rect CreateRect(int x, int y, int width, int height, int velocityX, int velocityY)
+struct rect* CreateRect(int x, int y, int width, int height, int velocityX, int velocityY)
 {
-	struct rect r;
-	r.x = x;
-	r.y = y;
-	r.width = width;
-	r.height = height;
-	r.velocityX = velocityX;
-	r.velocityY = velocityY;
-	r.prevX = x;
-	r.prevY = y;
+	struct rect* r = (struct rect*)malloc(sizeof(struct rect));
+	r->x = x;
+	r->y = y;
+	r->width = width;
+	r->height = height;
+	r->velocityX = velocityX;
+	r->velocityY = velocityY;
+	r->prevX = x;
+	r->prevY = y;
 	return r;
 }
 

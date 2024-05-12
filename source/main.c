@@ -8,8 +8,6 @@
 #include <stdlib.h>
 
 /* Local header files */
-
-#include "graphics.h"
 #include "gameplay.h"
 
 int moveSpeed = 2;
@@ -29,9 +27,9 @@ int main(void)
 		DrawPixel(SCREEN_WIDTH / 2, j, 0x7FFF); // white pixels
 	}
 
-	struct rect HumanPlayer = CreateRect(1, (SCREEN_HEIGHT/2 - 24/2), paddle_width, paddle_height, 0, 0);
-	struct rect CPUplayer = CreateRect((SCREEN_WIDTH - 8 - 1), SCREEN_HEIGHT/2 - 24/2, 8, 24, 0, 0);
-	struct rect ball = CreateRect((SCREEN_WIDTH / 2 - 8/2), (SCREEN_HEIGHT / 2 - 8/2), 8, 8, -ballSpeed, 0);
+	struct rect* HumanPlayer = CreateRect(1, (SCREEN_HEIGHT/2 - 24/2), paddle_width, paddle_height, 0, 0);
+	struct rect* CPUplayer = CreateRect((SCREEN_WIDTH - 8 - 1), SCREEN_HEIGHT/2 - 24/2, 8, 24, 0, 0);
+	struct rect* ball = CreateRect((SCREEN_WIDTH / 2 - 8/2), (SCREEN_HEIGHT / 2 - 8/2), 8, 8, -ballSpeed, -ballSpeed);
 
 	struct input Input;
 	Input.up = false;
@@ -43,22 +41,26 @@ int main(void)
 
 		/* Respond to user input and move player */
 		SetInput(&Input);
-		MovePlayer(&HumanPlayer, &Input);
-		KeepInBounds(&HumanPlayer);
+		MovePlayer(HumanPlayer, &Input);
+		KeepInBounds(HumanPlayer);
 
-		if(CheckCollision(&ball, &HumanPlayer) || CheckCollision(&ball, &CPUplayer)) ball.velocityX = ball.velocityX * -1;
-		MoveBall(&ball);
+		if(CheckCollision(ball, HumanPlayer) || (ball, CPUplayer)) ball->velocityX = ball->velocityX * -1;
+		MoveBall(ball);
 
 		/* Clear previous */
-		ClearPrevious(&ball);
-		ClearPrevious(&HumanPlayer);
-		ClearPrevious(&CPUplayer);
+		ClearPrevious(ball);
+		ClearPrevious(HumanPlayer);
+		ClearPrevious(CPUplayer);
 
-		HumanPlayer.y += HumanPlayer.velocityY;
+		HumanPlayer->y += HumanPlayer->velocityY;
 
 		/* Draw actors in scene */
-		DrawRect(&HumanPlayer);
-		DrawRect(&CPUplayer);
-		DrawRect(&ball);
+		DrawRect(HumanPlayer);
+		DrawRect(CPUplayer);
+		DrawRect(ball);
 	}
+
+	free(ball);
+	free(HumanPlayer);
+	free(CPUplayer);
 }

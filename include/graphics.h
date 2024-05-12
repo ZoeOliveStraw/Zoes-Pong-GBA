@@ -26,7 +26,7 @@ struct rect
 	int prevY;
 };
 
-struct rect CreateRect(int x, int y, int width, int height, int velocityX, int velocityY);
+struct rect* CreateRect(int x, int y, int width, int height, int velocityX, int velocityY);
 
 void DrawPixel(int x, int y, int color);
 
