@@ -1,0 +1,13 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "gba_systemcalls.h": "c",
+        "gba_console.h": "c",
+        "gba_base.h": "c",
+        "test.h": "c",
+        "graphics.h": "c",
+        "gba_input.h": "c",
+        "gba_interrupt.h": "c",
+        "gba_video.h": "c"
+    }
+}
