@@ -43,6 +43,6 @@ void PrintCharacter();
 
 void ClearScreen();
 
-void PrintCharacter(bool (*character)[64], int x, int y);
+void PrintCharacter(bool *character[64], int x, int y);
 
 #endif

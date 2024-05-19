@@ -80,21 +80,28 @@ void ClearScreen()
 	}
 }
 
-void PrintCharacter(bool (*character)[64], int x, int y)
+void PrintCharacter(bool *character[64], int x, int y)
 {
+	// for(int i = 0; i < 64; i++)
+	// {
+	// 	if(character[i]) DrawPixel(x + i, y, CLR_WHITE);
+	// }
+
 	for(int i = 0; i < 8; i++)
 	{
 		for(int j = 0; j < 8; j++)
 		{
 			int newY = y + i;
 			int newX = x + j;
-			int index = (i * 8) + j;
-			int color = CLR_BLACK;
+			int index = i * 8 + j;
 			if(character[index]) 
 			{
-				color = CLR_WHITE;
+				DrawPixel(newX, newY, CLR_WHITE);
 			}
-			DrawPixel(newX, newY, color);
+			else
+			{
+				DrawPixel(newX, newY, CLR_BLACK);
+			}
 		}
 	}
 }
