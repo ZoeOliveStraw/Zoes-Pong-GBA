@@ -26,12 +26,23 @@ struct rect
 	int prevY;
 };
 
+//Return a rect on the 
 struct rect* CreateRect(int x, int y, int width, int height, int velocityX, int velocityY);
 
 void DrawPixel(int x, int y, int color);
 
+void DrawCenterLine();
+
+void ClearCenterLine();
+
 void DrawRect(struct rect* cRect);
 
 void ClearPrevious(struct rect* cRect);
+
+void PrintCharacter();
+
+void ClearScreen();
+
+void PrintCharacter(bool (*character)[64], int x, int y);
 
 #endif

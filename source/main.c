@@ -5,6 +5,12 @@
 
 int main(void)
 {
-	RunGame(0, 0);
+	irqInit();
+	irqEnable(IRQ_VBLANK);
+	
+	/* Set GBA to Mode 3 */
+	SetMode(MODE_3 | BG2_ON);
+
+	MainMenu();
 	return 0;
 }

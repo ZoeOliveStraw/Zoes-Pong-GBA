@@ -25,6 +25,16 @@ void SetInput(struct input* cInput)
 	{
 		cInput->down = false;
 	}
+
+	if(key_pressed & KEY_START)
+	{
+		cInput->start = true;
+	}
+
+	if(key_released & KEY_START)
+	{
+		cInput->start = false;
+	}
 }
 
 void KeepInBounds(struct rect* cRect)
